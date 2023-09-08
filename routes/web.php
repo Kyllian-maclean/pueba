@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FichasController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\AprendizController;
+use App\Http\Controllers\QrController;
 
 
 Route::redirect('/', '/login')->name('index');
@@ -61,6 +62,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/excusas/instructor/aprobar{excusa}', [InstructorController::class, 'aprobarExcusa'])->name('fichas.instructor.aprobar');
     Route::post('/excusas/instructor/rechazar{excusa}', [InstructorController::class, 'rechazarExcusa'])->name('fichas.instructor.rechazar');
     Route::get('exportar-asistencias/{code}/{ficha}',  [InstructorController::class, 'exportarAsistencias'])->name('exportar.asistencias');
+    Route::get('/fichas/instructor/{ficha}/marcar', [InstructorController::class, 'marcarasistencia'])->name('fichas.instructor.marcar');
+    Route::post('/fichas/instructor/asistenceQr', [InstructorController::class, 'createAsistenceQr'])->name('fichas.instructor.asistenceQr');
+
 });
 
 // Rutas del controlador de aprendiz con middleware aplicado
@@ -71,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/create/excusas', [AprendizController::class, 'excusasCreate'])->name('excusas.create.index');
     Route::post('/users/create/excusas', [AprendizController::class, 'excusasStore'])->name('excusas.store.index');
     Route::get('/descargar-pdf/{nombreArchivo}',[AprendizController::class, 'descargarPDF'])->name('descargar.pdf');
-
+    Route::get('/users/aprendiz/QrCode', [QrController::class, 'QrAprendiz'])->name('users.aprendiz.QrCode');
 
 });
 

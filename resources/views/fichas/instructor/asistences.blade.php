@@ -52,7 +52,8 @@
         <thead>
             <tr>
                 <th>Codigo Aprendiz</th>
-                <th>Fecha</th>
+                <th>Entrada</th>
+                <th>Salida</th>
 
             </tr>
         </thead>
@@ -62,6 +63,7 @@
                 <tr>
                     <td>{{ $asist->user_id }}</td>
                     <td>{{ $asist->date }}</td>
+                    <td>{{ $asist->create_at_salida }}</td>
                 </tr>
             
             @endforeach

@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="{{url('assets/css/admin.css')}}">
+
 
     <title>Biometric</title>
+
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-2">
+    <div class="container-fluid">
       <a class="navbar-brand" href="#">Biometric</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,14 +34,14 @@
           <li class="nav-item ml-auto">
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
               @csrf
-              <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+              <button type="submit" class="btn btn-danger me-md-2">Cerrar sesión</button>
             </form>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-<div class="container mt-4">
+<div class="container mt-4 ">
     @yield('content')
 </div>
 

@@ -34,7 +34,7 @@
     <br>
     <br>
     <h1>Aprendices</h1>
-
+    <a href="{{ route('fichas.instructor.marcar', $ficha->code) }}" class="btn btn-primary">QR</a>
     <table class="table mt-3">
         <thead>
             <tr>
@@ -52,13 +52,38 @@
                         <td>{{ $student->status }}</td>
                         <td>
                             <a  class="btn btn-primary" href="{{ route('fichas.instructor.asistences', ['user' => $student->code,'ficha' => $ficha]) }}">Ver asistencias</a>
-                            <form  style="display: inline;" action="{{ route('fichas.instructor.asistence', ['user' => $student->code,'ficha' => $ficha]) }}" method="post">
+                            <form  style="display: inline;" action="{{ route('fichas.instructor.asistence', ['user' => $student->code,'ficha' => $ficha->code]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Marcar Asistencia</button>
                             </form>
                         </td>
                     </tr>
             @endforeach
+        </tbody>
+    </table>
+
+    <h1>Asistencias</h1>
+    <br>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>User_ID</th>
+                <th>Nombre</th>
+                <th>Entrada</th>
+                <th>Salida</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @foreach ($asistencias as $asistencia)
+            <tr>
+                <td>{{ $asistencia->user_id}}</td>
+                <td>{{ $asistencia->first_name}} {{ $asistencia->last_name}}</td>
+                <td>{{ $asistencia->date}}</td>
+                <td>{{ $asistencia->create_at_salida }}</td>
+            </tr>
+        @endforeach
+            
         </tbody>
     </table>
 
